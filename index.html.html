@@ -27,9 +27,12 @@
 				var query1 = new google.visualization.Query('https://spreadsheets.google.com/tq?key=1aNaanZtuiLRPfobuLDb8bvxsEcNyzC114PW70GW8nwk&sheet=Priority');
 				query1.setQuery('SELECT A,B,C ');
 				query1.send(handleQueryResponse2);
-				var query1 = new google.visualization.Query('https://spreadsheets.google.com/tq?key=1aNaanZtuiLRPfobuLDb8bvxsEcNyzC114PW70GW8nwk&sheet=Priority');
-				query1.setQuery('SELECT A,B');
-				query1.send(handleQueryResponse3);
+				var query2 = new google.visualization.Query('https://spreadsheets.google.com/tq?key=1aNaanZtuiLRPfobuLDb8bvxsEcNyzC114PW70GW8nwk&sheet=SP');
+				query2.setQuery('SELECT A,B');
+				query2.send(handleQueryResponse3);
+				var query3 = new google.visualization.Query('https://spreadsheets.google.com/tq?key=1aNaanZtuiLRPfobuLDb8bvxsEcNyzC114PW70GW8nwk&sheet=PSP');
+				query3.setQuery('SELECT A,B');
+				query3.send(handleQueryResponse4);
 	  
 		}
 		if (selValue == 'CH')
@@ -143,13 +146,35 @@
 				var data = response.getDataTable();
 				var options = 
 				{
-					title: 'Open/Reopen VS Priority',
+					title: 'ToDo/Reopened VS Priority - overall',
 					is3D: true,
 					
 				}
 
 
-			var chart = new google.visualization.PieChart(document.getElementById('Bar_Chart'));
+			var chart = new google.visualization.PieChart(document.getElementById('AllPie_Chart'));
+			chart.draw(data, options);
+  
+		}
+	 
+		
+		function handleQueryResponse4(response) 
+		{
+				if (response.isError()) 
+				{
+					alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+					return;
+				}
+				var data = response.getDataTable();
+				var options = 
+				{
+					title: 'ToDo/Reopened VS Priority - Prodapt',
+					is3D: true,
+					
+				}
+
+
+			var chart = new google.visualization.PieChart(document.getElementById('ProdaptPie_Chart'));
 			chart.draw(data, options);
   
 		}
@@ -163,10 +188,10 @@
 		</head>
 
 	<body onLoad="change()">
-		    <div id="Status_Chart" style="width: 700px; height: 300px;float:left" ></div>
+		    <div id="Priority_chart" style="width: 700px; height: 300px;float:left" ></div>
 
 		
-		<div id="Bar_Chart" style="width: 500px; height: 400px;float:right" ></div><br>
+		<div id="AllPie_Chart" style="width: 500px; height: 400px;float:right" ></div><br>
 		
 		<div><select id="chart" name='select1' onchange="change()">
 			<option value="All Countries">All Countries</option> 
@@ -175,7 +200,9 @@
 			</select></div>
 		
 		
-					<div id="Priority_chart" style="width: 700px; height: 300px;float:left"></div>
+					<div id="Status_Chart" style="width: 700px; height: 400px;float:left"></div>
+					<div id="ProdaptPie_Chart" style="width: 500px; height: 400px;float:right" ></div>
+
 
 			
 			
