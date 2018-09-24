@@ -1,0 +1,183 @@
+<html>
+  <head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+	
+	google.charts.load('current', {packages: ['corechart', 'bar']});
+	function change() {
+    var listbox = document.getElementById("chart");
+    var selIndex = listbox.selectedIndex;
+    var selValue = listbox.options[selIndex].value;
+    var selText = listbox.options[selIndex].text;
+    console.log(selValue);
+	google.charts.setOnLoadCallback(drawGID);
+	
+	
+		function drawGID()
+		{
+		if (selValue == 'All Countries')
+		{
+		
+        
+      
+				var query = new google.visualization.Query('https://spreadsheets.google.com/tq?key=1aNaanZtuiLRPfobuLDb8bvxsEcNyzC114PW70GW8nwk&sheet=Status');
+				query.setQuery('SELECT A,B,C ');
+				query.send(handleQueryResponse);
+				var query1 = new google.visualization.Query('https://spreadsheets.google.com/tq?key=1aNaanZtuiLRPfobuLDb8bvxsEcNyzC114PW70GW8nwk&sheet=Priority');
+				query1.setQuery('SELECT A,B,C ');
+				query1.send(handleQueryResponse2);
+				var query1 = new google.visualization.Query('https://spreadsheets.google.com/tq?key=1aNaanZtuiLRPfobuLDb8bvxsEcNyzC114PW70GW8nwk&sheet=Priority');
+				query1.setQuery('SELECT A,B');
+				query1.send(handleQueryResponse3);
+	  
+		}
+		if (selValue == 'CH')
+		{
+		
+        
+      
+				var query = new google.visualization.Query('https://spreadsheets.google.com/tq?key=1aNaanZtuiLRPfobuLDb8bvxsEcNyzC114PW70GW8nwk&sheet=CH');
+				query.setQuery('SELECT A,B,C ');
+				query.send(handleQueryResponse);
+				var query1 = new google.visualization.Query('https://spreadsheets.google.com/tq?key=1aNaanZtuiLRPfobuLDb8bvxsEcNyzC114PW70GW8nwk&sheet=CH P');
+				query1.setQuery('SELECT A,B,C ');
+				query1.send(handleQueryResponse2);
+				var query1 = new google.visualization.Query('https://spreadsheets.google.com/tq?key=1aNaanZtuiLRPfobuLDb8bvxsEcNyzC114PW70GW8nwk&sheet=CH P');
+				query1.setQuery('SELECT A,B');
+				query1.send(handleQueryResponse3);
+	  
+		}
+		if (selValue == 'NL')
+		{
+		
+        
+      
+				var query = new google.visualization.Query('https://spreadsheets.google.com/tq?key=1aNaanZtuiLRPfobuLDb8bvxsEcNyzC114PW70GW8nwk&sheet=Status');
+				query.setQuery('SELECT A,B,C ');
+				query.send(handleQueryResponse);
+				var query1 = new google.visualization.Query('https://spreadsheets.google.com/tq?key=1aNaanZtuiLRPfobuLDb8bvxsEcNyzC114PW70GW8nwk&sheet=Priority');
+				query1.setQuery('SELECT A,B,C ');
+				query1.send(handleQueryResponse2);
+				var query1 = new google.visualization.Query('https://spreadsheets.google.com/tq?key=1aNaanZtuiLRPfobuLDb8bvxsEcNyzC114PW70GW8nwk&sheet=Priority');
+				query1.setQuery('SELECT A,B');
+				query1.send(handleQueryResponse3);
+	  
+		}
+		}
+
+		function handleQueryResponse(response) 
+		{
+				if (response.isError()) 
+				{
+					alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+					return;
+				}
+				var data = response.getDataTable();
+				var materialOptions = 
+				{
+					chart: 
+					{
+						title: 'Defect count based on Status',
+						subtitle: 'Sprint - 173',     
+					},
+		
+					hAxis: 
+					{
+						title: 'Org',
+						minValue: 0,
+					},
+					vAxis: 
+					{
+						title: 'Defect'	
+					},
+					bars: 'horizontal'
+				};
+				var materialChart = new google.charts.Bar(document.getElementById('Status_Chart'));
+				materialChart.draw(data, materialOptions);
+  
+		}
+		
+			function handleQueryResponse2(response) 
+		{
+				if (response.isError()) 
+				{
+					alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+					return;
+				}
+				var data = response.getDataTable();
+				var materialOptions = 
+				{
+					chart: 
+					{
+						title: 'Defect count based on Priority',
+						subtitle: 'Sprint - 173',   
+						
+					},
+		
+					hAxis: 
+					{
+						title: 'Org',
+						minValue: 0,
+					},
+					vAxis: 
+					{
+						title: 'Defect'	
+					},
+					bars: 'horizontal'
+					
+					
+
+				};
+				var materialChart = new google.charts.Bar(document.getElementById('Priority_chart'));
+				materialChart.draw(data, materialOptions);
+  
+		}
+		function handleQueryResponse3(response) 
+		{
+				if (response.isError()) 
+				{
+					alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+					return;
+				}
+				var data = response.getDataTable();
+				var options = 
+				{
+					title: 'Open/Reopen VS Priority',
+					is3D: true,
+					
+				}
+
+
+			var chart = new google.visualization.PieChart(document.getElementById('Bar_Chart'));
+			chart.draw(data, options);
+  
+		}
+	 
+		}
+		
+     
+
+		</script>
+		
+		</head>
+
+	<body onLoad="change()">
+		    <div id="Status_Chart" style="width: 700px; height: 300px;float:left" ></div>
+
+		
+		<div id="Bar_Chart" style="width: 500px; height: 400px;float:right" ></div><br>
+		
+		<div><select id="chart" name='select1' onchange="change()">
+			<option value="All Countries">All Countries</option> 
+			<option value="CH">CH</option>
+			<option value="NL">NL</option>
+			</select></div>
+		
+		
+					<div id="Priority_chart" style="width: 700px; height: 300px;float:left"></div>
+
+			
+			
+  </body>
+</html>
