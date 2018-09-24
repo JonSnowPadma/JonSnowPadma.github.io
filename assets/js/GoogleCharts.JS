@@ -1,11 +1,9 @@
-<html>
-  <head>
-    <!--Load the AJAX API-->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
 	
 	google.charts.load('current', {packages: ['corechart', 'bar']});
-	function change() {
+	function change()
+ {
     var listbox = document.getElementById("chart");
     var selIndex = listbox.selectedIndex;
     var selValue = listbox.options[selIndex].value;
@@ -82,22 +80,26 @@
 					chart: 
 					{
 						title: 'Defect count based on Status',
-						subtitle: 'Sprint - 173',     
+						subtitle: 'Sprint - 173', 
+						
 					},
 		
 					hAxis: 
 					{
-						title: 'Org',
+						title: 'Status',
 						minValue: 0,
+						
 					},
 					vAxis: 
 					{
-						title: 'Defect'	
+						title: 'Defect'	,
+						
 					},
+					backgroundColor: { fill:'transparent' },
 					
 				};
 				var materialChart = new google.charts.Bar(document.getElementById('Status_Chart'));
-				materialChart.draw(data, materialOptions);
+				materialChart.draw(data, google.charts.Bar.convertOptions(materialOptions));
   
 		}
 		
@@ -114,26 +116,38 @@
 					chart: 
 					{
 						title: 'Defect count based on Priority',
-						subtitle: 'Sprint - 173',   
+						subtitle: 'Sprint - 173', 
 						
 					},
 		
 					hAxis: 
 					{
-						title: 'Org',
+						title: 'Priority',
 						minValue: 0,
+						
 					},
 					vAxis: 
 					{
-						title: 'Defect'	
+						title: 'Defect'	,
+						
+					
+					
 					},
+	
+					backgroundColor:
+					{ 
+					fill:'transparent',
+					//stroke: '#00001a',
+					//strokeWidth: 2					
+					},
+					
 					
 					
 					
 
 				};
 				var materialChart = new google.charts.Bar(document.getElementById('Priority_chart'));
-				materialChart.draw(data, materialOptions);
+				materialChart.draw(data,  google.charts.Bar.convertOptions(materialOptions));
   
 		}
 		function handleQueryResponse3(response) 
@@ -147,8 +161,14 @@
 				var options = 
 				{
 					title: 'ToDo/Reopened VS Priority - overall',
-					is3D: true,
+					//is3D: true,
+					backgroundColor: {
+					fill:'transparent',
 					
+					},
+					//legendTextStyle: { color: '#FFF' },
+					//titleTextStyle: { color: '#FFF' },
+
 				}
 
 
@@ -169,8 +189,12 @@
 				var options = 
 				{
 					title: 'ToDo/Reopened VS Priority - Prodapt',
-					is3D: true,
-					
+					//is3D: true,
+					backgroundColor: { fill:'transparent' },
+	
+					//legendTextStyle: { color: '#FFF' },
+					//titleTextStyle: { color: '#FFF' },
+
 				}
 
 
@@ -180,31 +204,4 @@
 		}
 	 
 		}
-		
-     
-
 		</script>
-		
-		</head>
-
-	<body onLoad="change()">
-		    <div id="Priority_chart" style="width: 700px; height: 300px;float:left" ></div>
-
-		
-		<div id="AllPie_Chart" style="width: 500px; height: 300px;float:right" ></div><br>
-		
-		<div><select id="chart" name='select1' onchange="change()">
-			<option value="All Countries">All Countries</option> 
-			<option value="CH">CH</option>
-			<option value="NL">NL</option>
-			</select></div>
-		
-		
-					<div id="Status_Chart" style="width: 700px; height: 300px;float:left"></div>
-					<div id="ProdaptPie_Chart" style="width: 500px; height: 300px;float:right" ></div>
-
-
-			
-			
-  </body>
-</html>
