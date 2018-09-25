@@ -1,27 +1,56 @@
+<!DOCTYPE HTML>
+<!--
+	Industrious by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
 <html>
-  <head>
-    <!--Load the AJAX API-->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-	
-	google.charts.load('current', {packages: ['corechart', 'bar']});
-	function change()
- {
-    var listbox = document.getElementById("chart");
-    var selIndex = listbox.selectedIndex;
-    var selValue = listbox.options[selIndex].value;
-    var selText = listbox.options[selIndex].text;
-    console.log(selValue);
-	google.charts.setOnLoadCallback(drawGID);
-	
-	
-		function drawGID()
+	<head>
+		<title>TPD TFT DEFECTS</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		   
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a class="logo" href="index.html">SDIL - TFT</a>
+				<nav>
+					<a href="#menu">Country</a>
+				</nav>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">ALL Countries</a></li>
+					<li><a href="CH.html">CH</a></li>
+					<li><a href="generic.html">NL</a></li>
+				</ul>
+			</nav>
+
+		<!-- Banner -->
+			<section id="banner">
+				<div class="inner">
+					<h1>TPD-TFT-Defect Report</h1>
+					<p>For all Countries <br />
+					 NL  -  CH -  AT -  CEE  -  IE</p>
+				</div>
+				<video autoplay loop muted playsinline src="images/banner.mp4"></video>
+			</section>
+
+		<!-- Highlights -->
+		   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+			<script type="text/javascript">
+
+   google.charts.load('current', {packages: ['corechart', 'bar']});
+	google.charts.setOnLoadCallback(drawGID); 
+	function drawGID()
 		{
-		if (selValue == 'All Countries')
-		{
-		
-        
-      
 				var query = new google.visualization.Query('https://spreadsheets.google.com/tq?key=1aNaanZtuiLRPfobuLDb8bvxsEcNyzC114PW70GW8nwk&sheet=Status');
 				query.setQuery('SELECT A,B,C ');
 				query.send(handleQueryResponse);
@@ -34,43 +63,9 @@
 				var query3 = new google.visualization.Query('https://spreadsheets.google.com/tq?key=1aNaanZtuiLRPfobuLDb8bvxsEcNyzC114PW70GW8nwk&sheet=PSP');
 				query3.setQuery('SELECT A,B');
 				query3.send(handleQueryResponse4);
-	  
-		}
-		if (selValue == 'CH')
-		{
-		
-        
-      
-				var query = new google.visualization.Query('https://spreadsheets.google.com/tq?key=1aNaanZtuiLRPfobuLDb8bvxsEcNyzC114PW70GW8nwk&sheet=CH');
-				query.setQuery('SELECT A,B,C ');
-				query.send(handleQueryResponse);
-				var query1 = new google.visualization.Query('https://spreadsheets.google.com/tq?key=1aNaanZtuiLRPfobuLDb8bvxsEcNyzC114PW70GW8nwk&sheet=CH P');
-				query1.setQuery('SELECT A,B,C ');
-				query1.send(handleQueryResponse2);
-				var query1 = new google.visualization.Query('https://spreadsheets.google.com/tq?key=1aNaanZtuiLRPfobuLDb8bvxsEcNyzC114PW70GW8nwk&sheet=CH P');
-				query1.setQuery('SELECT A,B');
-				query1.send(handleQueryResponse3);
-	  
-		}
-		if (selValue == 'NL')
-		{
-		
-        
-      
-				var query = new google.visualization.Query('https://spreadsheets.google.com/tq?key=1aNaanZtuiLRPfobuLDb8bvxsEcNyzC114PW70GW8nwk&sheet=Status');
-				query.setQuery('SELECT A,B,C ');
-				query.send(handleQueryResponse);
-				var query1 = new google.visualization.Query('https://spreadsheets.google.com/tq?key=1aNaanZtuiLRPfobuLDb8bvxsEcNyzC114PW70GW8nwk&sheet=Priority');
-				query1.setQuery('SELECT A,B,C ');
-				query1.send(handleQueryResponse2);
-				var query1 = new google.visualization.Query('https://spreadsheets.google.com/tq?key=1aNaanZtuiLRPfobuLDb8bvxsEcNyzC114PW70GW8nwk&sheet=Priority');
-				query1.setQuery('SELECT A,B');
-				query1.send(handleQueryResponse3);
-	  
-		}
-		}
-
-		function handleQueryResponse(response) 
+			
+		}				
+function handleQueryResponse(response) 
 		{
 				if (response.isError()) 
 				{
@@ -105,6 +100,7 @@
 				materialChart.draw(data, google.charts.Bar.convertOptions(materialOptions));
   
 		}
+   
 		
 			function handleQueryResponse2(response) 
 		{
@@ -143,11 +139,6 @@
 					//stroke: '#00001a',
 					//strokeWidth: 2					
 					},
-					
-					
-					
-					
-
 				};
 				var materialChart = new google.charts.Bar(document.getElementById('Priority_chart'));
 				materialChart.draw(data,  google.charts.Bar.convertOptions(materialOptions));
@@ -163,7 +154,7 @@
 				var data = response.getDataTable();
 				var options = 
 				{
-					title: 'ToDo/Reopened VS Priority - overall',
+					title: 'Overall',
 					//is3D: true,
 					backgroundColor: {
 					fill:'transparent',
@@ -191,7 +182,7 @@
 				var data = response.getDataTable();
 				var options = 
 				{
-					title: 'ToDo/Reopened VS Priority - Prodapt',
+					title: 'Prodapt',
 					//is3D: true,
 					backgroundColor: { fill:'transparent' },
 	
@@ -206,23 +197,81 @@
   
 		}
 	 
-		}
+		
+	
 		</script>
-		<div>
-			<select id="chart" name='select1' onchange="change()">
-				<option value="All Countries">All Countries</option> 
-				<option value="CH">CH</option>
-				<option value="NL">NL</option>
-			</select>
-		</div>
-	</head>
+	
 
-	<body onLoad="change()"  style=" background-repeat: no-repeat;background-position: center;	" background="Liberty-Global.PNG">
-		    
-		<div id="Priority_chart" style="width: 700px; height: 300px;float:left" ></div>
-		<div id="AllPie_Chart" style="width: 500px; height: 300px;float:right" ></div><br><br><br>
-		<div id="Status_Chart" style="width: 700px; height: 300px;float:left"></div>
-		<div id="ProdaptPie_Chart" style="width: 500px; height: 300px;float:right" ></div>		
+    </div>
+			<section class="wrapper">
+			 
+				<div class="inner">
+					<header class="special">
+						<h2>Defects count</h2>
+						<p>Based on priority and status</p>
+					</header>
+		
+	       		<div id="Priority_chart" style="width: 800px; height: 500px;float:center" ></div>
+				<div id="Status_Chart" style="width: 800px; height: 500px;float:left"></div>
+				
+			</div>	
+</section>			
+<section class="wrapper">
+			 
+				<div class="inner">
+					<header class="special">
+						<br><br><br><br><br><br><br><br><br>
+					</header>
+		
+</section>			
+		<!-- CTA -->
+			<section id="cta" class="wrapper">
+				<div class="inner">
+					<h2>TPD-TFT-DEFECT RAPPORT <br>
+					Voor alle landen
+					 </h2><p>NL  -  CH -  AT -  CEE  -  IE</p>
+				</div>
+			</section>
+
+		<!-- Testimonials -->
+			<section class="wrapper">
+						<div class="inner">
+					<header class="special">
+						<h2>Open defects</h2>
+						<p>TODO/Reopened defects based on priority</p>
+					</header>
+		
+	       		<div id="AllPie_Chart" style="width: 500px; height: 300px;float:right" ></div>
+				<div id="ProdaptPie_Chart" style="width: 500px; height: 300px;float:right" ></div>
+				
+			</div>	
+</section>			
+		<section class="wrapper">
+			 
+				<div class="inner">
+					<header class="special">
+						<br><br><br>
+					</header>
+		
+</section>
 			
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+				
+					<div class="copyright">
+					  Created by LG SDIL TPD-TFT Team
+					</div>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
 	</body>
 </html>
