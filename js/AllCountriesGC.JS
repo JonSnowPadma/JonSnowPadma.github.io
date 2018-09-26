@@ -29,7 +29,6 @@ function handleQueryResponse(response)
 					chart: 
 					{
 						title : 'Count based on status',
-						subtitle: 'Sprint - 173', 
 						
 					},
 		
@@ -66,7 +65,6 @@ function handleQueryResponse(response)
 					chart: 
 					{
 						title: 'Count based on priority',
-						subtitle: 'Sprint - 173', 
 						
 					},
 		
