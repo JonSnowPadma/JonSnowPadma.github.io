@@ -1,53 +1,4 @@
-<!DOCTYPE HTML>
-<!--
-	Industrious by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
-<html>
-	<head>
-		<title>TPD TFT DEFECTS</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		   
-	</head>
-	<body class="is-preload">
-
-		<!-- Header -->
-			<header id="header">
-				<a class="logo" href="index.html">SDIL - TFT</a>
-				<nav>
-					<a href="#menu">Menu</a>
-				</nav>
-			</header>
-
-		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="index.html">ALL Countries</a></li>
-					<li><a href="elements.html">CH</a></li>
-					<li><a href="generic.html">NL</a></li>
-				</ul>
-			</nav>
-
-		<!-- Banner -->
-			<section id="banner">
-				<div class="inner">
-					<h1>TPD-TFT-Defect Report</h1>
-					<p>For all Countries <br />
-					 NL  -  CH -  AT -  CEE  -  IE</p>
-				</div>
-				<video autoplay loop muted playsinline src="images/banner.mp4"></video>
-			</section>
-
-		<!-- Highlights -->
-		   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-			<script type="text/javascript">
-
-   google.charts.load('current', {packages: ['corechart', 'bar']});
+ google.charts.load('current', {packages: ['corechart', 'bar']});
 	google.charts.setOnLoadCallback(drawGID); 
 	function drawGID()
 		{
@@ -77,7 +28,7 @@ function handleQueryResponse(response)
 				{
 					chart: 
 					{
-						title: 'Defect count based on Status',
+						title : 'Count based on status',
 						subtitle: 'Sprint - 173', 
 						
 					},
@@ -114,7 +65,7 @@ function handleQueryResponse(response)
 				{
 					chart: 
 					{
-						title: 'Defect count based on Priority',
+						title: 'Count based on priority',
 						subtitle: 'Sprint - 173', 
 						
 					},
@@ -154,18 +105,15 @@ function handleQueryResponse(response)
 				var data = response.getDataTable();
 				var options = 
 				{
-					title: 'Overall',
-					//is3D: true,
+					
+					is3D: true,
 					backgroundColor: {
 					fill:'transparent',
 					
 					},
 					//legendTextStyle: { color: '#FFF' },
 					//titleTextStyle: { color: '#FFF' },
-
 				}
-
-
 			var chart = new google.visualization.PieChart(document.getElementById('AllPie_Chart'));
 			chart.draw(data, options);
   
@@ -182,96 +130,14 @@ function handleQueryResponse(response)
 				var data = response.getDataTable();
 				var options = 
 				{
-					title: 'Prodapt',
-					//is3D: true,
+					
+					is3D: true,
 					backgroundColor: { fill:'transparent' },
 	
 					//legendTextStyle: { color: '#FFF' },
 					//titleTextStyle: { color: '#FFF' },
-
 				}
-
-
 			var chart = new google.visualization.PieChart(document.getElementById('ProdaptPie_Chart'));
 			chart.draw(data, options);
   
 		}
-	 
-		
-	
-		</script>
-	
-
-    </div>
-			<section class="wrapper">
-			 
-				<div class="inner">
-					<header class="special">
-						<h2>Defects count</h2>
-						<p>Based on priority and status</p>
-					</header>
-		
-	       		<div id="Priority_chart" style="width: 800px; height: 500px;float:center" ></div>
-				<div id="Status_Chart" style="width: 800px; height: 500px;float:left"></div>
-				
-			</div>	
-</section>			
-<section class="wrapper">
-			 
-				<div class="inner">
-					<header class="special">
-						<br><br><br><br><br><br><br><br><br>
-					</header>
-		
-</section>			
-		<!-- CTA -->
-			<section id="cta" class="wrapper">
-				<div class="inner">
-					<h2>TPD-TFT-DEFECT RAPPORT <br>
-					Voor alle landen
-					 </h2><p>NL  -  CH -  AT -  CEE  -  IE</p>
-				</div>
-			</section>
-
-		<!-- Testimonials -->
-			<section class="wrapper">
-						<div class="inner">
-					<header class="special">
-						<h2>Open defects</h2>
-						<p>TODO/Reopened defects based on priority</p>
-					</header>
-		
-	       		<div id="AllPie_Chart" style="width: 500px; height: 300px;float:right" ></div>
-				<div id="ProdaptPie_Chart" style="width: 500px; height: 300px;float:right" ></div>
-				
-			</div>	
-</section>			
-		<section class="wrapper">
-			 
-				<div class="inner">
-					<header class="special">
-						<br><br><br>
-					</header>
-		
-</section>
-			
-
-		<!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
-				
-					<div class="copyright">
-					  Created by LG SDIL TPD-TFT Team
-					</div>
-				</div>
-			</footer>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
-</html>
